@@ -17,6 +17,12 @@ public class _04_HashCode {
 		testSearch(Medium::new); // [1] ???
 		testSearch(MediumWithSameHashCode::new); // [2] ???
 	}
+	/*
+	 * Erklärung:
+	 * ==========
+	 * Die zweite Klasse implementiert hashCode() mit einem fixen Wert.
+	 * Damit sind die Hash*-Implementierungen zur Performanceoptimierung nutzlos.
+	 */
 
 	private static void testSearch(Supplier<Medium> mediumFactory) {
 		final int countOfObjects = 10000;

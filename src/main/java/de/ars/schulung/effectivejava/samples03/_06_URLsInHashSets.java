@@ -20,7 +20,7 @@ public class _06_URLsInHashSets {
 	 */
 	public static void main(String[] args) throws MalformedURLException {
 		// Setup: Aufbau einer Liste von URLs
-		final URL[] urls = new URL[1000]; // ggf. anpassen
+		final URL[] urls = new URL[100000]; // ggf. anpassen
 		final int count = 10;
 		for (int i = 0; i < urls.length; i++) {
 			String url = String.format("http://www.server%s.ars.de/api", i % count);
@@ -31,11 +31,16 @@ public class _06_URLsInHashSets {
 		// Gegeben sei jetzt eine Liste von URLs mit Dopplungen, die per Set eliminiert werden sollen
 
 		// Variante 1
-		testWith(urlCol, HashSet::new); // [1] ???
+		testWith(urlCol, HashSet::new); // [1] inperformant
 		// Variante 2
-		testWith(urlCol, c -> c.stream().map(URL::toExternalForm).collect(Collectors.toSet())); // [2] ???
+		testWith(urlCol, c -> c.stream().map(URL::toExternalForm).collect(Collectors.toSet())); // [2] performant
 
 	}
+	/*
+	 * Die Klasse URL implementiert hashCode() und equals() nach der Semantik, dass der Host
+	 * inhaltlich gleich ist, wenn dahinter die gleiche IP-Adresse steckt. Es wird also ein
+	 * DNS-Lookup gemacht, der natürlich inperformanter ist.
+	 */
 
 	private static void testWith(Collection<URL> urlCol, Function<Collection<URL>, Collection<?>> f) {
 		measureAndPrintMessage(() -> {

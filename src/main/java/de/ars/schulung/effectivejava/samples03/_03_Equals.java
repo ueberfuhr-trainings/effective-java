@@ -23,14 +23,17 @@ public class _03_Equals {
 		b2.setPages(100);
 		b2.setTitle("Ein Buch.");
 		// Reflexiv
-		printMessage(() -> m1.equals(m1)); // [1] ???
-		printMessage(() -> b1.equals(b1)); // [2] ???
+		printMessage(() -> m1.equals(m1)); // [1] true
+		printMessage(() -> b1.equals(b1)); // [2] true
 		// Symmetrisch
-		printMessage(() -> m1.equals(b1)); // [3] ???
-		printMessage(() -> b1.equals(m1)); // [4] ???
-		printMessage(() -> b1.equals(b2)); // [5] ???
-		printMessage(() -> b2.equals(b1)); // [6] ???
+		printMessage(() -> m1.equals(b1)); // [3] false
+		printMessage(() -> b1.equals(m1)); // [4] true
+		printMessage(() -> b1.equals(b2)); // [5] false
+		printMessage(() -> b2.equals(b1)); // [6] false
 	}
+	/*
+	 * Korrektur s.u.
+	 */
 
 	private static class Medium {
 		private String isbn;
@@ -67,7 +70,9 @@ public class _03_Equals {
 				return true;
 			if (obj == null)
 				return false;
-			if (Medium.class != obj.getClass())
+			if (Medium.class != obj.getClass()) // hier kritisch, auf denselben Typ zu prüfen
+				// this.getClass != obj.getClass() ODER
+				// Medium.class.isAssignableFrom(obj.getClass())
 				return false;
 			Medium other = (Medium) obj;
 			if (isbn == null) {

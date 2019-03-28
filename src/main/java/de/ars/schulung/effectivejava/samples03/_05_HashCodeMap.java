@@ -19,10 +19,19 @@ public class _05_HashCodeMap {
 		medium.setIsbn("12345");
 		map.put(medium, 12345);
 		// read from map
-		printMessage(() -> "Value is " + map.get(medium)); // [1] ???
+		printMessage(() -> "Value is " + map.get(medium)); // [1] Value is 12345
 		medium.setIsbn("54321");
-		printMessage(() -> "Value is " + map.get(medium)); // [2] ???
+		printMessage(() -> "Value is " + map.get(medium)); // [2] Value is null
 	}
+	/*
+	 * Erklärung:
+	 * ==========
+	 * Nach der ersten Ausgabe wird der Zustand des Mediums geändert.
+	 * Damit ändert sich auch der hashCode(), und das Objekt wird in der Map nicht mehr gefunden.
+	 *
+	 * Fazit:
+	 * Objekte, die als Key dienen, nicht ändern. (evtl. immutable designen)
+	 */
 
 	private static class Medium {
 

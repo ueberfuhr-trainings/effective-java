@@ -21,7 +21,7 @@ public class _01_Wrapper {
 			for (int i = 0; i < Integer.MAX_VALUE; sum += i++)
 				;
 			return sum;
-		}); // [2] ???
+		}); // [2] performant
 		// Variante 2
 		Function<Long, Long> f = sum -> {
 			for (int i = 0; i < Integer.MAX_VALUE; sum += i++)
@@ -31,7 +31,15 @@ public class _01_Wrapper {
 		measureAndPrintMessage(() -> {
 			long sum = 0L;
 			return f.apply(sum);
-		}); // [3] ???
+		}); // [3] inperformant
+		/*
+		 * Erklärung:
+		 * ==========
+		 * Beim zweiten Beispiel nutzen wir eine Lambda in Verbindung mit Generics, für die nur Referenztypen eingesetzt
+		 * werden können, und erzeugen so aus dem
+		 * primitiven long ein Long-Objekt. Die Addition von Long-Objekten führt implizit zu Auto-Unboxing und
+		 * Auto-Boxing. Letzteres erzeugt Objekte, was dann zu Performanzverlust führt.
+		 */
 	}
 
 }
