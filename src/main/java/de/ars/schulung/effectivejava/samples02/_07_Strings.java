@@ -16,21 +16,28 @@ public class _07_Strings {
 				text += 'a';
 			}
 			return text;
-		}, String::length); // [1] ???
+		}, String::length); // [1] sehr inperformant
 		measureAndPrintMessage(() -> {
 			StringBuilder text = new StringBuilder();
 			for (int i = 0; i < count; i++) {
 				text.append('a');
 			}
 			return text.toString();
-		}, String::length); // [2] ???
+		}, String::length); // [2] schon gut
 		measureAndPrintMessage(() -> {
 			StringBuilder text = new StringBuilder(count);
 			for (int i = 0; i < count; i++) {
 				text.append('a');
 			}
 			return text.toString();
-		}, String::length); // [3] ???
+		}, String::length); // [3] noch besser, v.a. wenn count nocht größer!
+		/*
+		 * Erklärung:
+		 * ==========
+		 * - Variante1 erzeugt viele String-Objekte
+		 * - Variante2 vermeidet das Erzeugen von Objekten
+		 * - Variante3 wie Variante 2, aber belegt das interne byte-Array im StringBuilder vor, sodass keine Verlängerung notwendig ist
+		 */
 	}
 
 }

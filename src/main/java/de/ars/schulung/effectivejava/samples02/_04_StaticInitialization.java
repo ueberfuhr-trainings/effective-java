@@ -26,7 +26,18 @@ public class _04_StaticInitialization {
 	 * Welche Ausgabe wird hier erzeugt?
 	 */
 	public static void main(String[] args) {
-		printMessage(() -> Elvis.CURRENT_YEAR); // [1] ???
-		printMessage(() -> String.format("Elvis wears a size %d belt.", Elvis.INSTANCE.beltSize())); // [2] ???
+		printMessage(() -> Elvis.CURRENT_YEAR); // [1] (aktuelles Jahr)
+		printMessage(() -> String.format("Elvis wears a size %d belt.", Elvis.INSTANCE.beltSize())); // [2] -1930
+		/*
+		 * Erklärung:
+		 * ==========
+		 *  - JLS §12.4
+		 *  - Statische Member werden in der Reihenfolge initialisiert, in der sie stehen
+		 *  
+		 * Lösungsansätze:
+		 * ===============
+		 *  - Statische Member tauschen
+		 *  - Berechnung nicht im Konstruktor, sondern im Getter
+		 */
 	}
 }

@@ -15,7 +15,7 @@ public class _02_ObjectCreation {
 	public static void main(String[] args) {
 		final int count = 1000000; // ggf. anpassen
 		final int objectSize = 1000; // ggf. anpassen
-		// Ausführung 1: [1] ???
+		// Ausführung 1: [1] inperformant
 		execute(() -> {
 			StringBuilder sb = new StringBuilder();
 			for (int i = 0; i < count; i++) {
@@ -25,7 +25,7 @@ public class _02_ObjectCreation {
 			}
 			return sb.toString();
 		});
-		// Ausführung 2: [2] ???
+		// Ausführung 2: [2] performant
 		execute(() -> {
 			StringBuilder sb = new StringBuilder();
 			Konto k1 = new Konto(objectSize);
@@ -35,6 +35,13 @@ public class _02_ObjectCreation {
 			}
 			return sb.toString();
 		});
+		/*
+		 * Erklärung:
+		 * ==========
+		 * Ausführung 2 ist performanter, weil die Konto-Instanz wiederverwendet wird.
+		 * Das ist nur möglich, wenn die Referenzen nicht herausgegeben und weiterverwertet werden müssen.
+		 * Aufpassen dabei, dass das Objekt stets neu-initialisiert wird.
+		 */
 	}
 
 	@SuppressWarnings("unused")
