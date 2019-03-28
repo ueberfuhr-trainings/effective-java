@@ -45,7 +45,7 @@ public class _01_ThreadPool {
 			} catch (InterruptedException e) {
 				return String.format("%s%n%s", e.getMessage(), Arrays.toString(e.getStackTrace()));
 			}
-		}); // [1] ???
+		}); // [1] inperformant
 		// Variante 2
 		measureAndPrintMessage(() -> {
 			final ExecutorService pool = Executors.newFixedThreadPool(threadPoolThreads);
@@ -64,7 +64,13 @@ public class _01_ThreadPool {
 				}
 			}
 			return message;
-		}); // [2] ???
+		}); // [2] performant
+		/*
+		 * Erklärung:
+		 * ==========
+		 * Thread Pools sind performanter, denn eine große Menge an Threads sorgt für zu viel Verwaltungsaufwand
+		 * (v.a. Thread erzeugen, evtl. auch Wechsel zwischen Threads bei Quasi-Parallelität).
+		 */
 	}
 
 }

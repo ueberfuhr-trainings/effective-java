@@ -47,7 +47,7 @@ public class _02_ThreadLocal {
 			} catch (InterruptedException e) {
 				return String.format("%s%n%s", e.getMessage(), Arrays.toString(e.getStackTrace()));
 			}
-		}); // [1] ???
+		}); // [1] wie erwartet
 		// Variante 2
 		printMessage(() -> {
 			final ExecutorService pool = Executors.newFixedThreadPool(threadPoolThreads);
@@ -66,7 +66,7 @@ public class _02_ThreadLocal {
 				}
 			}
 			return message;
-		}); // [2] ???
+		}); // [2] ThreadLocal übernimmt Werte aus vorheriger Thread-Ausführung
 	}
 
 }
