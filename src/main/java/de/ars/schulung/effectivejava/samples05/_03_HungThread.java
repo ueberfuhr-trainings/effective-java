@@ -2,7 +2,7 @@ package de.ars.schulung.effectivejava.samples05;
 
 public class _03_HungThread extends Thread {
 
-	boolean keepRunning = true;
+	volatile boolean keepRunning = true;
 
 	@Override
 	public void run() {
@@ -21,4 +21,11 @@ public class _03_HungThread extends Thread {
 		t.keepRunning = false;
 		System.out.println("keepRunning set to " + t.keepRunning + ".");
 	}
+	/*
+	 * Erklärung:
+	 * ==========
+	 * keepRunning ist primitiv und liegt daher im Thread Stack. Beide Threads greifen darauf
+	 * zu, d.h. die Variable muss zwischen beiden synchronisiert werden. Dies ist aber nicht immer
+	 * gegeben, z.B. bei Server-VMs. Abhilfe schafft das Schlüsselwort "volatile".
+	 */
 }
