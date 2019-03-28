@@ -2,7 +2,7 @@ package de.ars.schulung.effectivejava.samples02;
 
 import static de.ars.schulung.effectivejava.utilities.AnalizationUtil.printMessage;
 
-public class _07_Addition {
+public class _08_Addition {
 
 	/*
 	 * Verhält sich die Anwendung wie erwartet?
