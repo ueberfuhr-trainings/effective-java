@@ -21,15 +21,29 @@ public class _04_ExceptionsInLambdas {
 	}
 
 	/*
-	 * - nur diese beiden Methoden dürfen verändert werden
-	 * - es muss printMessage(...) mit λ aufgerufen werden
+	 * - nur diese beiden Methoden dürfen verändert werden - es muss
+	 * printMessage(...) mit λ aufgerufen werden
 	 */
 	private static void executeAction() throws IOException {
-		/* KOMMENTARZEICHEN BITTE ENTFERNEN
-		Supplier<String> λ = () -> readFile("demo.txt");
-		printMessage(λ);
-   		KOMMENTARZEICHEN BITTE ENTFERNEN */
+		try {
+			Supplier<String> λ = () -> {
+				try {
+					return readFile("demo.txt");
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			};
+			printMessage(λ);
+		} catch (RuntimeException e) {
+			Throwable cause = e.getCause();
+			if (cause instanceof IOException) {
+				throw (IOException) cause;
+			} else {
+				throw e;
+			}
+		}
 	}
+	// Alternative: Lombok's @SneakyThrows
 
 	private static String readFile(String name) throws IOException {
 		try (InputStream in = new FileInputStream(name)) {

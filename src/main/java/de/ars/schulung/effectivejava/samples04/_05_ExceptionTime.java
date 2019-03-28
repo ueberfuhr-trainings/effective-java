@@ -22,6 +22,11 @@ public class _05_ExceptionTime {
 		final boolean adult = person.isAdult();
 		printMessage(() -> adult ? "Yes, it's an adult." : "No, still a child.");
 	}
+	/*
+	 * Erklärung:
+	 * ==========
+	 * Fail-fast wäre besser -> Prüfung im Konstruktor
+	 */
 
 	@SuppressWarnings("unused")
 	private static class Person {
@@ -33,6 +38,9 @@ public class _05_ExceptionTime {
 
 		public Person(String name, LocalDate birthDate) {
 			super();
+			if(null == birthDate) {
+				throw new IllegalArgumentException("birthdate must not be null!");
+			}
 			this.name = name;
 			this.birthDate = birthDate;
 		}

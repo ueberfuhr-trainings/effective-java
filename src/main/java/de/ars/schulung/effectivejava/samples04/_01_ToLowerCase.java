@@ -13,5 +13,11 @@ public class _01_ToLowerCase {
 		final int j = s.toLowerCase().length();
 		printMessage(() -> i == j);
 	}
+	/*
+	 * Nein, z.B. bei Start mit Parameter -Duser.language=lt.
+	 * Typisches I18n-Problem. Vorsicht also, wenn Logik sich
+	 * darauf verlässt.
+	 * Stattdessen lieber String#toLowerCase(Locale) verwenden.
+	 */
 
 }
