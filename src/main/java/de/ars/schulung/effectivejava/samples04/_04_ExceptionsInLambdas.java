@@ -25,8 +25,10 @@ public class _04_ExceptionsInLambdas {
 	 * - es muss printMessage(...) mit λ aufgerufen werden
 	 */
 	private static void executeAction() throws IOException {
+		/* KOMMENTARZEICHEN BITTE ENTFERNEN
 		Supplier<String> λ = () -> readFile("demo.txt");
 		printMessage(λ);
+   		KOMMENTARZEICHEN BITTE ENTFERNEN */
 	}
 
 	private static String readFile(String name) throws IOException {
