@@ -14,34 +14,34 @@ public class _04_ExceptionsInLambdas {
 	 */
 	public static void main(String[] args) {
 		try {
-			try {
-				executeAction();
-			} catch (RuntimeException e) {
-				Throwable cause = e.getCause();
-				if (cause instanceof IOException) {
-					throw (IOException) cause;
-				} else {
-					throw e;
-				}
-			}
+			executeAction();
 		} catch (IOException e) {
 			printMessage(() -> "Exception ist aufgetreten. Hier wollen wir sie behandeln.");
 		}
 	}
 
 	/*
-	 * - nur diese beiden Methoden dürfen verändert werden
-	 * - es muss printMessage(...) mit λ aufgerufen werden
+	 * - nur diese beiden Methoden dürfen verändert werden - es muss
+	 * printMessage(...) mit λ aufgerufen werden
 	 */
 	private static void executeAction() throws IOException {
-		Supplier<String> λ = () -> {
-			try {
-				return readFile("demo.txt");
-			} catch (IOException e) {
-				throw new RuntimeException(e);
+		try {
+			Supplier<String> λ = () -> {
+				try {
+					return readFile("demo.txt");
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			};
+			printMessage(λ);
+		} catch (RuntimeException e) {
+			Throwable cause = e.getCause();
+			if (cause instanceof IOException) {
+				throw (IOException) cause;
+			} else {
+				throw e;
 			}
-		};
-		printMessage(λ);
+		}
 	}
 
 	private static String readFile(String name) throws IOException {
