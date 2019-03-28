@@ -25,5 +25,17 @@ public class _05_Bark {
 		Dog nipper = new Basenji();
 		woofer.bark();
 		nipper.bark();
+		
+		/*
+		 * Erklärung:
+		 * ==========
+		 * Die Methoden sind statisch gebunden.
+		 * Daher zählt nicht der Laufzeittyp, sondern der Typ, der zur Compile Time ermittelt wird.
+		 * 
+		 * Lösungsansätze:
+		 * ===============
+		 * - nipper vom Typ Basenji statt Dog
+		 * - Methoden dynamisch binden (static entfernen)
+		 */
 	}
 }
