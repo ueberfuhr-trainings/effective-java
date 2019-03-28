@@ -10,8 +10,8 @@ public class _03_Collections2 {
 	 * Welche Ausgaben werden erzeugt?
 	 */
 	public static void main(String[] args) {
-		printMessage(() -> Arrays.asList(new Object[] { 1, 2, 3 })); // [1] ???
-		printMessage(() -> Arrays.asList(new int[] { 1, 2, 3 })); // [2] ???
+		printMessage(() -> Arrays.asList(new Object[] { 1, 2, 3 })); // [1] [1, 2, 3]
+		printMessage(() -> Arrays.asList(new int[] { 1, 2, 3 })); // [2] [[I@41629346]
 	}
 
 }

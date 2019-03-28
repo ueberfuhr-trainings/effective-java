@@ -13,5 +13,8 @@ public class _01_ToLowerCase {
 		final int j = s.toLowerCase().length();
 		printMessage(() -> i == j);
 	}
+	/*
+	 * Nein, z.B. bei Start mit Parameter -Duser.language=lt.
+	 */
 
 }

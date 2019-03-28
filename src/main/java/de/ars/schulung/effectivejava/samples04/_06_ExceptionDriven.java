@@ -27,7 +27,7 @@ public class _06_ExceptionDriven {
 				}
 			}
 			return "Fertig";
-		}); // [1] ???
+		}); // [1] inperformant
 		measureAndPrintMessage(() -> {
 			for (int i = 0; i < count; i++) {
 				Iterator<String> it = messages.iterator();
@@ -36,7 +36,13 @@ public class _06_ExceptionDriven {
 				}
 			}
 			return "Fertig";
-		}); // [2] ???
+		}); // [2] performant
 	}
+	/*
+	 * Erklärung:
+	 * ==========
+	 * Exceptions sind inperformant, daher vermeiden, v.a. zur Steuerung von Algorithmen.
+	 */
+	
 
 }

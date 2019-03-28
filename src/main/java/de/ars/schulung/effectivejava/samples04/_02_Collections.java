@@ -19,7 +19,7 @@ public class _02_Collections {
 			list.add(3);
 			list.remove(2);
 			return list;
-		}); // [1] ???
+		}); // [1] [1, 2]
 		printMessage(() -> {
 			Collection<Integer> list = new ArrayList<>();
 			list.add(1);
@@ -27,7 +27,13 @@ public class _02_Collections {
 			list.add(3);
 			list.remove(2);
 			return list;
-		}); // [2] ???
+		}); // [2] [1, 3]
+		/*
+		 * Erklärung:
+		 * ==========
+		 * Erstere Variante entfernt das 2. Objekt der Liste,
+		 * die zweite Variante das Objekt "2" (Autoboxing).
+		 */
 	}
 
 }
