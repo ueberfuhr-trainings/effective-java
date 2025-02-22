@@ -6,7 +6,12 @@ public class _08_Addition {
 
 	/*
 	 * Verhält sich die Anwendung wie erwartet?
-	 * Hinweis: Starte das Beispiel mit JVM-Option: "--add-opens java.base/java.lang=effective.java.samples"
+	 *
+	 * Hinweis:
+	 *  - Dieses Beispiel lief mit älteren JVMs (bis Java 8) ohne zusätzliche Einstellungen.
+	 *  - Seit Java 11 gibt es hier mein Starten eine Exception. Diese ist nicht gewünscht.
+	 *  - Starte daher das Beispiel mit JVM-Option:
+	 *    "--add-opens java.base/java.lang=effective.java.samples"
 	 */
 	public static void main(String[] args) {
 		int b = 2;
